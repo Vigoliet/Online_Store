@@ -4,64 +4,72 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserService {
+
+    private ArrayList<User> users = new ArrayList<>();
     private String currentUser;
-    private ArrayList<String> usernames = new ArrayList<>();
-    private ArrayList<String> passwords = new ArrayList<>();
+    //private Scanner scanner = new Scanner(System.in);
 
     private boolean isLoggedIn() {
         return currentUser != null;
     }
 
-    public void registerUser(Scanner scanner){
-
-
+    public static User getDetails() {
+        Scanner scanner = new Scanner(System.in);
         System.out.print("Enter a username: ");
-        String username = scanner.nextLine();
 
-        // Check if the username already exists
-        if (usernames.contains(username)) {
-            System.out.println("Username already exists. Please choose a different username.");
-            return;
-        }
+        String username = scanner.nextLine();
 
         System.out.print("Enter a password: ");
         String password = scanner.nextLine();
 
-        // Add the new user to the ArrayLists
-        usernames.add(username);
-        passwords.add(password);
+        return new User(username, password);
+    }
+
+    public void registerUser(User user) {
+        if (isLoggedIn()) {
+            System.out.println("You are already logged in. Logout first to register a new user.");
+            return;
+        }
+
+        // Check if the username already exists
+        if (users.contains(user)) {
+            System.out.println("Username already exists. Please choose a different username.");
+            return;
+        }
+
+        // Add the new user to the ArrayList
+        users.add(user);
 
         System.out.println("User registered successfully!");
     }
 
-    public void login(Scanner scanner){
+    public void login(User user) {
         if (isLoggedIn()) {
             System.out.println("You are already logged in. Logout first to login with a different user.");
             return;
         }
 
-        System.out.print("Enter your username: ");
-        String username = scanner.nextLine();
+        // Check if the user exists in the ArrayList
+        if (users.contains(user)) {
+            // Find the actual user object in the list
+            User actualUser = users.get(users.indexOf(user));
 
-        System.out.print("Enter your password: ");
-        String password = scanner.nextLine();
-
-        // Check if the username and password match
-        int index = usernames.indexOf(username);
-        // -1 is if specified element does not exit
-        if (index != -1 && passwords.get(index).equals(password)) {
-            currentUser = username;
-            System.out.println("Login successful. Welcome, " + username + "!");
+            // Check if the entered password matches the stored password
+            if (actualUser.getPassword().equals(user.getPassword())) {
+                currentUser = actualUser.getUsername();
+                System.out.println("Login successful. Welcome, " + currentUser + "!");
+            } else {
+                System.out.println("Invalid password. Please try again.");
+            }
         } else {
-            System.out.println("Invalid username or password. Please try again.");
+            System.out.println("User not found. Please try again.");
         }
     }
 
     public void printRegisteredUsers() {
         System.out.println("Registered Users:");
-
-        for (String username : usernames) {
-            System.out.println(username);
+        for (User user : users) {
+            System.out.println(user.getUsername());
         }
     }
 }
