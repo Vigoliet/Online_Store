@@ -66,6 +66,10 @@ public class UserService {
         }
     }
 
+    public String CurrentUser(){
+        return currentUser;
+    }
+
     public void printRegisteredUsers() {
         System.out.println("Registered Users:");
         for (User user : users) {
