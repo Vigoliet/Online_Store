@@ -2,13 +2,15 @@ package org.example;
 
 public class Product {
 
-    // add ID
+    private static int nextID = 1;
+    private final int id;
     private String name;
     private double price;
 
     private String category;
 
     public Product(String name, double price, String category) {
+        this.id = nextID++;
         this.name = name;
         this.price = price;
         this.category = category;
@@ -41,9 +43,14 @@ public class Product {
     @Override
     public String toString() {
         return "Product{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", price=" + price +
                 ", category='" + category + '\'' +
                 '}';
+    }
+
+    public static void resetID() {
+        nextID = 1;
     }
 }

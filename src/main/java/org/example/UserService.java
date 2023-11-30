@@ -13,6 +13,10 @@ public class UserService {
         return currentUser != null;
     }
 
+    public void logout(){
+        currentUser = null;
+    }
+
     public static User getDetails() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter a username: ");
