@@ -82,6 +82,8 @@ public class Main {
                 break;
             case 3:
                 System.out.println("\n---Add item to cart---");
+                var productId = getProductById();
+                productManager.addProductToCart(initialProducts().get(productId-1));
                 break;
             case 4:
                 System.out.println("\n---Checkout---");
@@ -121,8 +123,12 @@ public class Main {
                 // Add more products as needed
         ));
         return availableProducts;
-        /*productManager.addProductToCart(availableProducts[0]);
-        productManager.printCart(); */
+    }
+
+    private static int getProductById(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter ID of item to add to cart");
+        return scanner.nextInt();
     }
 
 }
