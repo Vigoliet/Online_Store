@@ -25,6 +25,14 @@ public class ProductManager {
         }
     }
 
+    public void checkout() {
+        double total = 0;
+        for (Product product : shoppingCart) {
+            total += product.getPrice();
+        }
+        System.out.println("Total: " + total);
+    }
+
 
 
 
