@@ -40,8 +40,9 @@ public class Main {
                 var inputOption = mainMenu("1. Available products \n" +
                         "2. View cart\n" +
                         "3. Add to cart\n" +
-                        "4. Checkout \n" +
-                        "5. Logout");
+                        "4. Remove item from cart\n" +
+                        "5. Checkout \n" +
+                        "6. Logout");
 
                 handleInputOptionStore(inputOption);
 
@@ -86,10 +87,15 @@ public class Main {
                 productManager.addProductToCart(initialProducts().get(productId-1));
                 break;
             case 4:
+                System.out.println("\n---Remove item from cart---");
+                var productIdRemove = getProductById();
+                productManager.removeProductFromCart(productIdRemove);
+                break;
+            case 5:
                 System.out.println("\n---Checkout---");
                 productManager.checkout();
                 break;
-            case 5:
+            case 6:
                 System.out.println("\n---Logout---");
                 userService.logout();
                 runProgram();
@@ -128,7 +134,7 @@ public class Main {
 
     private static int getProductById(){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter ID of item to add to cart");
+        System.out.println("Enter ID of item");
         return scanner.nextInt();
     }
 

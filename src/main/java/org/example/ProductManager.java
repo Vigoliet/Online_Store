@@ -15,8 +15,14 @@ public class ProductManager {
         shoppingCart.add(product);
     }
 
-    public void removeProductFromCart(Product product) {
-        shoppingCart.remove(product);
+    public void removeProductFromCart(int productId) {
+        for (Product product : shoppingCart) {
+            if (product.getId() == productId) {
+                shoppingCart.remove(product);
+                return; // Once removed, exit the method
+            }
+        }
+        System.out.println("Product with ID " + productId + " not found in the cart.");
     }
 
     public void printCart() {

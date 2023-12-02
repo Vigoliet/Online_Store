@@ -40,6 +40,14 @@ public class Product {
         this.category = category;
     }
 
+    public static void resetID() {
+        nextID = 1;
+    }
+
+    public int getId() {
+        return id;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
@@ -50,7 +58,4 @@ public class Product {
                 '}';
     }
 
-    public static void resetID() {
-        nextID = 1;
-    }
 }
