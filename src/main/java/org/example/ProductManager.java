@@ -11,6 +11,10 @@ public class ProductManager {
 
     ArrayList<Product> shoppingCart;
 
+    public ArrayList<Product> getShoppingCart() {
+        return shoppingCart;
+    }
+
     public void addProductToCart(Product product) {
         shoppingCart.add(product);
     }

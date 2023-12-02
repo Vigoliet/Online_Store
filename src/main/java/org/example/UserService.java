@@ -70,6 +70,10 @@ public class UserService {
         }
     }
 
+    public ArrayList<User> getUsers() {
+        return users;
+    }
+
     public String CurrentUser(){
         return currentUser;
     }
