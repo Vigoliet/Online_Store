@@ -1,4 +1,4 @@
-# Assigntment: Online store
+# Assignment: Online store
 
 ## How to run the code
 
@@ -34,8 +34,7 @@ Class for handling the users that will be registered in the store.
 - If they choose to login they will be prompted to enter their username and password. If they enter the correct credentials 
 they will be logged in and be able to access the store.
 - If they enter the wrong credentials they will be prompted to try again.
-- When logged in the user will be able to see the products in the store and choose to buy one of them.
-- If they choose to buy a product they will be prompted to enter the name of the product they want to buy.
-- If the product exists in the store and the user has enough money to buy it they will be able to buy it.
+- When logged in - the user will be able to see the products in the store and choose to buy one of them.
+- If they choose to add a product to their cart, they will be prompted to enter the ID of the product they want to buy.
 - If the product does not exist in the store or the user does not have enough money to buy it they will be prompted to try again.
 
